@@ -1,0 +1,46 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="ExerciceSynthese.MainPage">
+    <StackLayout Margin="20" BackgroundColor="Beige">
+        <Grid Margin="20" BackgroundColor="Black" >
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="4*" />
+                <ColumnDefinition Width="1*" />
+                <ColumnDefinition Width="1*" />
+            </Grid.ColumnDefinitions>
+            <Label  Margin="10" FontSize="25" VerticalTextAlignment="Center" TextColor="white" x:Name="lblDate" Grid.Row="0" Grid.Column="0" Text="Date" HorizontalTextAlignment="Start"/>
+            <ImageButton Margin="0, 2, 2, 2" Source="account.png" Grid.Row="0" Grid.Column="1" x:Name="btnProfil" Clicked="btnProfil_Clicked" BackgroundColor="Transparent"/>
+            <ImageButton Margin="0, 2, 2, 2" Source="plus.png"  Grid.Row="0" Grid.Column="2" x:Name="btnCreerTache" BackgroundColor="Transparent" Clicked="btnCreerTache_Clicked"/>
+        </Grid>
+        <ListView x:Name="listeTaches" ItemTapped="listeTaches_ItemTapped">
+            <ListView.ItemTemplate  BackgroundColor="black">
+                <DataTemplate>
+                    <ViewCell>
+                        <Frame  CornerRadius="8" BackgroundColor="White" Margin="10,15" HasShadow="True">
+                            <Grid Padding="20">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="Auto"/>
+                                </Grid.RowDefinitions>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
+                                <Grid>
+                                    <Label Grid.Row="0" Grid.Column="0" Text="{Binding Title}" FontSize="24" TextColor="Black" FontAttributes="Bold"/>
+
+                                    <Switch Grid.Row="0" Grid.Column="1" IsToggled="{Binding Etat}" Toggled="Switch_Toggled"  ThumbColor="Beige" OnColor="ForestGreen"/>
+                                    <Label Grid.Row="1" Grid.Column="0" Text="{Binding Description}" FontSize="13" TextColor="Black"/>
+                                </Grid>
+                            </Grid>
+                        </Frame>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+    </StackLayout>
+</ContentPage>
